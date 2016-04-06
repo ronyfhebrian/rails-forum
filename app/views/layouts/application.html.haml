@@ -11,9 +11,13 @@
   %header.main-header.clearfix
     .wrapper
       #logo
-        %p Forum by Rony Fhebrian
+        %p= link_to "Forum by Rony Fhebrian", root_path
       #buttons
-        = link_to "Post Baru", new_post_path
+        - if user_signed_in?
+          = link_to "Post Baru", new_post_path
+        - else
+          = link_to "Daftar", new_user_registration_path
+          = link_to "Masuk", new_user_session_path
   .wrapper
     %p.notice= notice
     %p.alert= alert
